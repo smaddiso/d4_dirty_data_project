@@ -79,3 +79,23 @@ q3 <- decathlon_clean %>%
 q3
 ```
 
+Q4: What was the shot-put scores for the top three competitors in each competition?
+
+```{r}
+q4 <- decathlon_clean %>%
+  select("name", "competition", "result", "event") %>%
+  filter(competition == "Decastar", event == "shot_put") %>%
+  arrange(desc(result)) %>%
+  head(3)
+q4
+```
+
+```{r}
+q4 <- decathlon_clean %>%
+  select("name", "competition", "result", "event") %>%
+  filter(competition == "OlympicG", event == "shot_put") %>%
+  arrange(desc(result)) %>%
+  head(3)
+q4
+```
+

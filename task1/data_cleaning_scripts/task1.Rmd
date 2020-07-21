@@ -5,6 +5,7 @@ output: html_notebook
 
 ```{r}
 library(tidyverse)
+library(dplyr)
 library(janitor)
 library(here)
 ```
@@ -25,8 +26,15 @@ view(decathlon)
 ```
 
 ```{r}
+# convert row names to a column
+decathlon <- rownames_to_column(decathlon, "name")
+```
+
+
+```{r}
 # tidy column names
 decathlon_clean <- clean_names(decathlon)
+
 decathlon_clean
 ```
 
@@ -38,4 +46,15 @@ decathlon_clean <- decathlon_clean %>%
                values_to = "result")
 decathlon_clean
 ```
+Q1: Who had the longest long jump seen in the data?
+
+```{r}
+q1 <- decathlon_clean %>%
+  filter(event == "long_jump") %>%
+  arrange(desc(result)) %>%
+  head(1)
+q1
+```
+
+
 

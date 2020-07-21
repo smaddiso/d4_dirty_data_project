@@ -1,0 +1,41 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+```{r}
+here()
+```
+
+
+```{r}
+decathlon <- read_rds(here("raw_data/decathlon.rds"))
+decathlon
+```
+
+```{r}
+glimpse(decathlon)
+view(decathlon)
+```
+
+```{r}
+# tidy column names
+decathlon_clean <- clean_names(decathlon)
+decathlon_clean
+```
+
+```{r}
+# convert wide data to long data
+decathlon_clean <- decathlon_clean %>%
+  pivot_longer(cols = "x100m":"x1500m",
+               names_to = "event",
+               values_to = "result")
+decathlon_clean
+```
+

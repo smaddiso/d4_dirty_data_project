@@ -12,6 +12,7 @@ library(readr)
 ```
 
 ```{r}
+# read clean data from CSV file into dataframe
 decathlon <- read_csv(here("clean_data/decathlon_clean.csv"))
 decathlon
 ```
@@ -19,6 +20,8 @@ decathlon
 Q1: Who had the longest long jump seen in the data?
 
 ```{r}
+# filter data frame for long_jump rows only, then order results
+# descending and output the top row
 longest_long_jump <- decathlon %>%
   filter(event == "long_jump") %>%
   arrange(desc(result)) %>%
@@ -29,6 +32,8 @@ longest_long_jump
 Q2: What was the average 100m time in each competition?
 
 ```{r}
+# select the applicable columns, filter for 100m rows only, group by
+# competition and output the average of the results 
 avg_100m <- decathlon %>%
   select("competition", "event", "result") %>%
   filter(event == "x100m") %>%
@@ -40,6 +45,8 @@ avg_100m
 Q3: Who had the highest total points across both competitions?
 
 ```{r}
+# select the applicable columns, group by name and points, summarise
+# the results then order results descending and output the top row
 highest_points <- decathlon %>%
   select("name", "points") %>%
   group_by(name, points) %>%
@@ -51,7 +58,14 @@ highest_points
 
 Q4: What was the shot-put scores for the top three competitors in each competition?
 
+# Note: I'd prefer to code this answer using group_by on the competition column
+# rather than hard-code the competition names (and to avoid code duplication)
+# but I couldn't get the results to order correctly using group_by or output
+# the top row of each grouped competition
+
 ```{r}
+# select the applicable rows, filter for competition and event then order
+# the results descending then output the top 3 rows
 top_3_shot_put_decastar <- decathlon %>%
   select("name", "competition", "result", "event") %>%
   filter(competition == "Decastar", event == "shot_put") %>%
@@ -61,6 +75,8 @@ top_3_shot_put_decastar
 ```
 
 ```{r}
+# select the applicable rows, filter for competition and event then order
+# the results descending then output the top 3 rows
 top_3_shot_put_olympicg <- decathlon %>%
   select("name", "competition", "result", "event") %>%
   filter(competition == "OlympicG", event == "shot_put") %>%
@@ -71,7 +87,12 @@ top_3_shot_put_olympicg
 
 Q5: What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
 
+# Note: I would prefer this code to be a single chunk rather than 2 separate
+# chunks to avoid code duplication
+
 ```{r}
+# select applicable columns, filter by event and result time, groups by event
+# and output the summary of the average result
 avg_400m_less_50s <- decathlon %>%
   select("result", "event") %>%
   filter(event == "x400m", result < 50) %>%
@@ -81,6 +102,8 @@ avg_400m_less_50s
 ```
 
 ```{r}
+# select applicable columns, filter by event and result time, groups by event
+# and output the summary of the average result
 avg_400m_more_50s <- decathlon %>%
   select("result", "event") %>%
   filter(event == "x400m", result > 50) %>%

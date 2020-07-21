@@ -1751,43 +1751,12 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4wIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjIgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjAuMiAgICAg4pyTIGRwbHlyICAgMS4wLjBcbuKckyB0aWR5ciAgIDEuMS4wICAgICDinJMgc3RyaW5nciAxLjQuMFxu4pyTIHJlYWRyICAgMS4zLjEgICAgIOKckyBmb3JjYXRzIDAuNS4wXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
-<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
-  method         from
-  print.tbl_lazy     
-  print.tbl_sql      
-── Attaching packages ──────────────────────────────────── tidyverse 1.3.0 ──
-✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-✓ tibble  3.0.2     ✓ dplyr   1.0.0
-✓ tidyr   1.1.0     ✓ stringr 1.4.0
-✓ readr   1.3.1     ✓ forcats 0.5.0
-── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoamFuaXRvcilcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)
-library(janitor)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYamFuaXRvcuKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6c3RhdHPigJk6XG5cbiAgICBjaGlzcS50ZXN0LCBmaXNoZXIudGVzdFxuIn0= -->
-<pre><code>
-Attaching package: ‘janitor’
-
-The following objects are masked from ‘package:stats’:
-
-    chisq.test, fisher.test</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuYGBgIn0= -->
-<pre class="r"><code>library(here)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCAvVXNlcnMvc3RldmVtYWRkaXNvbi9Ib21ld29yay9kNF9kaXJ0eV9kYXRhX3Byb2plY3QvdGFzazFcbiJ9 -->
-<pre><code>here() starts at /Users/stevemaddison/Homework/d4_dirty_data_project/task1</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmBgYCJ9 -->
-<pre class="r"><code>library(readr)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShqYW5pdG9yKVxubGlicmFyeShoZXJlKVxubGlicmFyeShyZWFkcilcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+library(dplyr)
+library(janitor)
+library(here)
+library(readr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1890,6 +1859,17 @@ longest_long_jump</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Q4: What was the shot-put scores for the top three competitors in each competition?</p>
+<div id="note-id-prefer-to-code-this-answer-using-group_by-on-the-competition-column" class="section level1">
+<h1>Note: I’d prefer to code this answer using group_by on the competition column</h1>
+</div>
+<div id="rather-than-hard-code-the-competition-names-and-to-avoid-code-duplication" class="section level1">
+<h1>rather than hard-code the competition names (and to avoid code duplication)</h1>
+</div>
+<div id="but-i-couldnt-get-the-results-to-order-correctly-using-group_by-or-output" class="section level1">
+<h1>but I couldn’t get the results to order correctly using group_by or output</h1>
+</div>
+<div id="the-top-row-of-each-grouped-competition" class="section level1">
+<h1>the top row of each grouped competition</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG9wXzNfc2hvdF9wdXRfZGVjYXN0YXIgPC0gZGVjYXRobG9uICU+JVxuICBzZWxlY3QoXCJuYW1lXCIsIFwiY29tcGV0aXRpb25cIiwgXCJyZXN1bHRcIiwgXCJldmVudFwiKSAlPiVcbiAgZmlsdGVyKGNvbXBldGl0aW9uID09IFwiRGVjYXN0YXJcIiwgZXZlbnQgPT0gXCJzaG90X3B1dFwiKSAlPiVcbiAgYXJyYW5nZShkZXNjKHJlc3VsdCkpICU+JVxuICBoZWFkKDMpXG50b3BfM19zaG90X3B1dF9kZWNhc3RhclxuYGBgIn0= -->
@@ -1929,6 +1909,12 @@ top_3_shot_put_olympicg</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Q5: What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?</p>
+</div>
+<div id="note-i-would-prefer-this-code-to-be-a-single-chunk-rather-than-2-separate" class="section level1">
+<h1>Note: I would prefer this code to be a single chunk rather than 2 separate</h1>
+</div>
+<div id="chunks-to-avoid-code-duplication" class="section level1">
+<h1>chunks to avoid code duplication</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXZnXzQwMG1fbGVzc181MHMgPC0gZGVjYXRobG9uICU+JVxuICBzZWxlY3QoXCJyZXN1bHRcIiwgXCJldmVudFwiKSAlPiVcbiAgZmlsdGVyKGV2ZW50ID09IFwieDQwMG1cIiwgcmVzdWx0IDwgNTApICU+JVxuICBncm91cF9ieShldmVudCkgJT4lXG4gIHN1bW1hcmlzZShhdmVyYWdlX3Jlc3VsdCA9IG1lYW4ocmVzdWx0KSlcbmBgYCJ9 -->
@@ -1976,8 +1962,9 @@ top_3_shot_put_olympicg</code></pre>
 </div>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoaGVyZSkKbGlicmFyeShyZWFkcikKYGBgCgpgYGB7cn0KZGVjYXRobG9uIDwtIHJlYWRfY3N2KGhlcmUoImNsZWFuX2RhdGEvZGVjYXRobG9uX2NsZWFuLmNzdiIpKQpkZWNhdGhsb24KYGBgCgpRMTogV2hvIGhhZCB0aGUgbG9uZ2VzdCBsb25nIGp1bXAgc2VlbiBpbiB0aGUgZGF0YT8KCmBgYHtyfQpsb25nZXN0X2xvbmdfanVtcCA8LSBkZWNhdGhsb24gJT4lCiAgZmlsdGVyKGV2ZW50ID09ICJsb25nX2p1bXAiKSAlPiUKICBhcnJhbmdlKGRlc2MocmVzdWx0KSkgJT4lCiAgaGVhZCgxKQpsb25nZXN0X2xvbmdfanVtcApgYGAKClEyOiBXaGF0IHdhcyB0aGUgYXZlcmFnZSAxMDBtIHRpbWUgaW4gZWFjaCBjb21wZXRpdGlvbj8KCmBgYHtyfQphdmdfMTAwbSA8LSBkZWNhdGhsb24gJT4lCiAgc2VsZWN0KCJjb21wZXRpdGlvbiIsICJldmVudCIsICJyZXN1bHQiKSAlPiUKICBmaWx0ZXIoZXZlbnQgPT0gIngxMDBtIikgJT4lCiAgZ3JvdXBfYnkoY29tcGV0aXRpb24pICU+JQogIHN1bW1hcmlzZShhdmVyYWdlX3Jlc3VsdCA9IG1lYW4ocmVzdWx0KSkKYXZnXzEwMG0KYGBgCgpRMzogV2hvIGhhZCB0aGUgaGlnaGVzdCB0b3RhbCBwb2ludHMgYWNyb3NzIGJvdGggY29tcGV0aXRpb25zPwoKYGBge3J9CmhpZ2hlc3RfcG9pbnRzIDwtIGRlY2F0aGxvbiAlPiUKICBzZWxlY3QoIm5hbWUiLCAicG9pbnRzIikgJT4lCiAgZ3JvdXBfYnkobmFtZSwgcG9pbnRzKSAlPiUKICBzdW1tYXJpc2UoKSAlPiUKICBhcnJhbmdlKGRlc2MocG9pbnRzKSkgJT4lCiAgaGVhZCgxKQpoaWdoZXN0X3BvaW50cwpgYGAKClE0OiBXaGF0IHdhcyB0aGUgc2hvdC1wdXQgc2NvcmVzIGZvciB0aGUgdG9wIHRocmVlIGNvbXBldGl0b3JzIGluIGVhY2ggY29tcGV0aXRpb24/CgpgYGB7cn0KdG9wXzNfc2hvdF9wdXRfZGVjYXN0YXIgPC0gZGVjYXRobG9uICU+JQogIHNlbGVjdCgibmFtZSIsICJjb21wZXRpdGlvbiIsICJyZXN1bHQiLCAiZXZlbnQiKSAlPiUKICBmaWx0ZXIoY29tcGV0aXRpb24gPT0gIkRlY2FzdGFyIiwgZXZlbnQgPT0gInNob3RfcHV0IikgJT4lCiAgYXJyYW5nZShkZXNjKHJlc3VsdCkpICU+JQogIGhlYWQoMykKdG9wXzNfc2hvdF9wdXRfZGVjYXN0YXIKYGBgCgpgYGB7cn0KdG9wXzNfc2hvdF9wdXRfb2x5bXBpY2cgPC0gZGVjYXRobG9uICU+JQogIHNlbGVjdCgibmFtZSIsICJjb21wZXRpdGlvbiIsICJyZXN1bHQiLCAiZXZlbnQiKSAlPiUKICBmaWx0ZXIoY29tcGV0aXRpb24gPT0gIk9seW1waWNHIiwgZXZlbnQgPT0gInNob3RfcHV0IikgJT4lCiAgYXJyYW5nZShkZXNjKHJlc3VsdCkpICU+JQogIGhlYWQoMykKdG9wXzNfc2hvdF9wdXRfb2x5bXBpY2cKYGBgCgpRNTogV2hhdCB3YXMgdGhlIGF2ZXJhZ2UgcG9pbnRzIGZvciBjb21wZXRpdG9ycyB3aG8gcmFuIHRoZSA0MDBtIGluIGxlc3MgdGhhbiA1MCBzZWNvbmRzIHZzLiB0aG9zZSB0aGFuIHJhbiA0MDBtIGluIG1vcmUgdGhhbiA1MCBzZWNvbmRzPwoKYGBge3J9CmF2Z180MDBtX2xlc3NfNTBzIDwtIGRlY2F0aGxvbiAlPiUKICBzZWxlY3QoInJlc3VsdCIsICJldmVudCIpICU+JQogIGZpbHRlcihldmVudCA9PSAieDQwMG0iLCByZXN1bHQgPCA1MCkgJT4lCiAgZ3JvdXBfYnkoZXZlbnQpICU+JQogIHN1bW1hcmlzZShhdmVyYWdlX3Jlc3VsdCA9IG1lYW4ocmVzdWx0KSkKYXZnXzQwMG1fbGVzc181MHMKYGBgCgpgYGB7cn0KYXZnXzQwMG1fbW9yZV81MHMgPC0gZGVjYXRobG9uICU+JQogIHNlbGVjdCgicmVzdWx0IiwgImV2ZW50IikgJT4lCiAgZmlsdGVyKGV2ZW50ID09ICJ4NDAwbSIsIHJlc3VsdCA+IDUwKSAlPiUKICBncm91cF9ieShldmVudCkgJT4lCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfcmVzdWx0ID0gbWVhbihyZXN1bHQpKQphdmdfNDAwbV9tb3JlXzUwcwpgYGAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoaGVyZSkKbGlicmFyeShyZWFkcikKYGBgCgpgYGB7cn0KIyByZWFkIGNsZWFuIGRhdGEgZnJvbSBDU1YgZmlsZSBpbnRvIGRhdGFmcmFtZQpkZWNhdGhsb24gPC0gcmVhZF9jc3YoaGVyZSgiY2xlYW5fZGF0YS9kZWNhdGhsb25fY2xlYW4uY3N2IikpCmRlY2F0aGxvbgpgYGAKClExOiBXaG8gaGFkIHRoZSBsb25nZXN0IGxvbmcganVtcCBzZWVuIGluIHRoZSBkYXRhPwoKYGBge3J9CiMgZmlsdGVyIGRhdGEgZnJhbWUgZm9yIGxvbmdfanVtcCByb3dzIG9ubHksIHRoZW4gb3JkZXIgcmVzdWx0cwojIGRlc2NlbmRpbmcgYW5kIG91dHB1dCB0aGUgdG9wIHJvdwpsb25nZXN0X2xvbmdfanVtcCA8LSBkZWNhdGhsb24gJT4lCiAgZmlsdGVyKGV2ZW50ID09ICJsb25nX2p1bXAiKSAlPiUKICBhcnJhbmdlKGRlc2MocmVzdWx0KSkgJT4lCiAgaGVhZCgxKQpsb25nZXN0X2xvbmdfanVtcApgYGAKClEyOiBXaGF0IHdhcyB0aGUgYXZlcmFnZSAxMDBtIHRpbWUgaW4gZWFjaCBjb21wZXRpdGlvbj8KCmBgYHtyfQojIHNlbGVjdCB0aGUgYXBwbGljYWJsZSBjb2x1bW5zLCBmaWx0ZXIgZm9yIDEwMG0gcm93cyBvbmx5LCBncm91cCBieQojIGNvbXBldGl0aW9uIGFuZCBvdXRwdXQgdGhlIGF2ZXJhZ2Ugb2YgdGhlIHJlc3VsdHMgCmF2Z18xMDBtIDwtIGRlY2F0aGxvbiAlPiUKICBzZWxlY3QoImNvbXBldGl0aW9uIiwgImV2ZW50IiwgInJlc3VsdCIpICU+JQogIGZpbHRlcihldmVudCA9PSAieDEwMG0iKSAlPiUKICBncm91cF9ieShjb21wZXRpdGlvbikgJT4lCiAgc3VtbWFyaXNlKGF2ZXJhZ2VfcmVzdWx0ID0gbWVhbihyZXN1bHQpKQphdmdfMTAwbQpgYGAKClEzOiBXaG8gaGFkIHRoZSBoaWdoZXN0IHRvdGFsIHBvaW50cyBhY3Jvc3MgYm90aCBjb21wZXRpdGlvbnM/CgpgYGB7cn0KIyBzZWxlY3QgdGhlIGFwcGxpY2FibGUgY29sdW1ucywgZ3JvdXAgYnkgbmFtZSBhbmQgcG9pbnRzLCBzdW1tYXJpc2UKIyB0aGUgcmVzdWx0cyB0aGVuIG9yZGVyIHJlc3VsdHMgZGVzY2VuZGluZyBhbmQgb3V0cHV0IHRoZSB0b3Agcm93CmhpZ2hlc3RfcG9pbnRzIDwtIGRlY2F0aGxvbiAlPiUKICBzZWxlY3QoIm5hbWUiLCAicG9pbnRzIikgJT4lCiAgZ3JvdXBfYnkobmFtZSwgcG9pbnRzKSAlPiUKICBzdW1tYXJpc2UoKSAlPiUKICBhcnJhbmdlKGRlc2MocG9pbnRzKSkgJT4lCiAgaGVhZCgxKQpoaWdoZXN0X3BvaW50cwpgYGAKClE0OiBXaGF0IHdhcyB0aGUgc2hvdC1wdXQgc2NvcmVzIGZvciB0aGUgdG9wIHRocmVlIGNvbXBldGl0b3JzIGluIGVhY2ggY29tcGV0aXRpb24/CgojIE5vdGU6IEknZCBwcmVmZXIgdG8gY29kZSB0aGlzIGFuc3dlciB1c2luZyBncm91cF9ieSBvbiB0aGUgY29tcGV0aXRpb24gY29sdW1uCiMgcmF0aGVyIHRoYW4gaGFyZC1jb2RlIHRoZSBjb21wZXRpdGlvbiBuYW1lcyAoYW5kIHRvIGF2b2lkIGNvZGUgZHVwbGljYXRpb24pCiMgYnV0IEkgY291bGRuJ3QgZ2V0IHRoZSByZXN1bHRzIHRvIG9yZGVyIGNvcnJlY3RseSB1c2luZyBncm91cF9ieSBvciBvdXRwdXQKIyB0aGUgdG9wIHJvdyBvZiBlYWNoIGdyb3VwZWQgY29tcGV0aXRpb24KCmBgYHtyfQojIHNlbGVjdCB0aGUgYXBwbGljYWJsZSByb3dzLCBmaWx0ZXIgZm9yIGNvbXBldGl0aW9uIGFuZCBldmVudCB0aGVuIG9yZGVyCiMgdGhlIHJlc3VsdHMgZGVzY2VuZGluZyB0aGVuIG91dHB1dCB0aGUgdG9wIDMgcm93cwp0b3BfM19zaG90X3B1dF9kZWNhc3RhciA8LSBkZWNhdGhsb24gJT4lCiAgc2VsZWN0KCJuYW1lIiwgImNvbXBldGl0aW9uIiwgInJlc3VsdCIsICJldmVudCIpICU+JQogIGZpbHRlcihjb21wZXRpdGlvbiA9PSAiRGVjYXN0YXIiLCBldmVudCA9PSAic2hvdF9wdXQiKSAlPiUKICBhcnJhbmdlKGRlc2MocmVzdWx0KSkgJT4lCiAgaGVhZCgzKQp0b3BfM19zaG90X3B1dF9kZWNhc3RhcgpgYGAKCmBgYHtyfQojIHNlbGVjdCB0aGUgYXBwbGljYWJsZSByb3dzLCBmaWx0ZXIgZm9yIGNvbXBldGl0aW9uIGFuZCBldmVudCB0aGVuIG9yZGVyCiMgdGhlIHJlc3VsdHMgZGVzY2VuZGluZyB0aGVuIG91dHB1dCB0aGUgdG9wIDMgcm93cwp0b3BfM19zaG90X3B1dF9vbHltcGljZyA8LSBkZWNhdGhsb24gJT4lCiAgc2VsZWN0KCJuYW1lIiwgImNvbXBldGl0aW9uIiwgInJlc3VsdCIsICJldmVudCIpICU+JQogIGZpbHRlcihjb21wZXRpdGlvbiA9PSAiT2x5bXBpY0ciLCBldmVudCA9PSAic2hvdF9wdXQiKSAlPiUKICBhcnJhbmdlKGRlc2MocmVzdWx0KSkgJT4lCiAgaGVhZCgzKQp0b3BfM19zaG90X3B1dF9vbHltcGljZwpgYGAKClE1OiBXaGF0IHdhcyB0aGUgYXZlcmFnZSBwb2ludHMgZm9yIGNvbXBldGl0b3JzIHdobyByYW4gdGhlIDQwMG0gaW4gbGVzcyB0aGFuIDUwIHNlY29uZHMgdnMuIHRob3NlIHRoYW4gcmFuIDQwMG0gaW4gbW9yZSB0aGFuIDUwIHNlY29uZHM/CgojIE5vdGU6IEkgd291bGQgcHJlZmVyIHRoaXMgY29kZSB0byBiZSBhIHNpbmdsZSBjaHVuayByYXRoZXIgdGhhbiAyIHNlcGFyYXRlCiMgY2h1bmtzIHRvIGF2b2lkIGNvZGUgZHVwbGljYXRpb24KCmBgYHtyfQojIHNlbGVjdCBhcHBsaWNhYmxlIGNvbHVtbnMsIGZpbHRlciBieSBldmVudCBhbmQgcmVzdWx0IHRpbWUsIGdyb3VwcyBieSBldmVudAojIGFuZCBvdXRwdXQgdGhlIHN1bW1hcnkgb2YgdGhlIGF2ZXJhZ2UgcmVzdWx0CmF2Z180MDBtX2xlc3NfNTBzIDwtIGRlY2F0aGxvbiAlPiUKICBzZWxlY3QoInJlc3VsdCIsICJldmVudCIpICU+JQogIGZpbHRlcihldmVudCA9PSAieDQwMG0iLCByZXN1bHQgPCA1MCkgJT4lCiAgZ3JvdXBfYnkoZXZlbnQpICU+JQogIHN1bW1hcmlzZShhdmVyYWdlX3Jlc3VsdCA9IG1lYW4ocmVzdWx0KSkKYXZnXzQwMG1fbGVzc181MHMKYGBgCgpgYGB7cn0KIyBzZWxlY3QgYXBwbGljYWJsZSBjb2x1bW5zLCBmaWx0ZXIgYnkgZXZlbnQgYW5kIHJlc3VsdCB0aW1lLCBncm91cHMgYnkgZXZlbnQKIyBhbmQgb3V0cHV0IHRoZSBzdW1tYXJ5IG9mIHRoZSBhdmVyYWdlIHJlc3VsdAphdmdfNDAwbV9tb3JlXzUwcyA8LSBkZWNhdGhsb24gJT4lCiAgc2VsZWN0KCJyZXN1bHQiLCAiZXZlbnQiKSAlPiUKICBmaWx0ZXIoZXZlbnQgPT0gIng0MDBtIiwgcmVzdWx0ID4gNTApICU+JQogIGdyb3VwX2J5KGV2ZW50KSAlPiUKICBzdW1tYXJpc2UoYXZlcmFnZV9yZXN1bHQgPSBtZWFuKHJlc3VsdCkpCmF2Z180MDBtX21vcmVfNTBzCmBgYAo=</div>
 
 
 

@@ -56,5 +56,13 @@ q1 <- decathlon_clean %>%
 q1
 ```
 
+Q2: What was the average 100m time in each competition?
 
-
+```{r}
+q2 <- decathlon_clean %>%
+  select("competition", "event", "result") %>%
+  filter(event == "x100m") %>%
+  group_by(competition) %>%
+  summarise(average_result = mean(result))
+q2
+```

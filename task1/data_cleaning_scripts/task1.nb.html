@@ -1877,9 +1877,32 @@ q1</code></pre>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Q2: What was the average 100m time in each competition?</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucTIgPC0gZGVjYXRobG9uX2NsZWFuICU+JVxuICBzZWxlY3QoXCJjb21wZXRpdGlvblwiLCBcImV2ZW50XCIsIFwicmVzdWx0XCIpICU+JVxuICBmaWx0ZXIoZXZlbnQgPT0gXCJ4MTAwbVwiKSAlPiVcbiAgZ3JvdXBfYnkoY29tcGV0aXRpb24pICU+JVxuICBzdW1tYXJpc2UoYXZlcmFnZV9yZXN1bHQgPSBtZWFuKHJlc3VsdCkpXG5gYGAifQ== -->
+<pre class="r"><code>q2 &lt;- decathlon_clean %&gt;%
+  select(&quot;competition&quot;, &quot;event&quot;, &quot;result&quot;) %&gt;%
+  filter(event == &quot;x100m&quot;) %&gt;%
+  group_by(competition) %&gt;%
+  summarise(average_result = mean(result))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiYHN1bW1hcmlzZSgpYCB1bmdyb3VwaW5nIG91dHB1dCAob3ZlcnJpZGUgd2l0aCBgLmdyb3Vwc2AgYXJndW1lbnQpXG4ifQ== -->
+<pre><code>`summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucTJcbmBgYCJ9 -->
+<pre class="r"><code>q2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVJ2VTdETUJCMjh3TTBpSUxFTTlBdFdSaGdRaDBxR0pFUVNHVkN4cjJXQ01lT0hLZkExc2ZnWFhnRmhnNE12QUZ2a1hDT1kwUTkyUGY1dTd2dmZud3puWjBtczRRUUVwS0lCQ1NNRVpMNDd2WXlQU2NrQ3ZBeFFNZlEyRmNNT2thQVpIaGdMVG83dXhXNHcyRUZ2RUowMUhrdHV6Y0ZSaXRObFh0Zjg3ZWl6Tm1WbHgwelRpdVgvQ2U1b0V4TGhhakJNekt5ay9IOVp6aCszMHhPdnI3WEh4Yy92b3lnQmZnOTdETlpsS0J6blV2UlV5TzZBa1dYOEtDZ3FybjJWSVpLdm1ST3FadDVqVmZidG8wTkRGdXYwV1JPTmMwV0NsTnNzMXR5dTdJMHBWRXNNSXVNdmVTQjhvakRXcGppODVROTFlSTVQVE1GK3FXVHZxSCtBLzVqVXpKeWpjVnVneUNXdVFDM0hVNGZnYnNWNEpEZGpGbXBjcUhkSk1oV21aYWF1cmlFU2U0WSt4SE5MeDZpMzZRL0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["competition"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["average_result"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Decastar","2":"11.17538"},{"1":"OlympicG","2":"10.91571"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoaGVyZSkKYGBgCgpgYGB7cn0KaGVyZSgpCmBgYAoKCmBgYHtyfQpkZWNhdGhsb24gPC0gcmVhZF9yZHMoaGVyZSgicmF3X2RhdGEvZGVjYXRobG9uLnJkcyIpKQpkZWNhdGhsb24KYGBgCgpgYGB7cn0KZ2xpbXBzZShkZWNhdGhsb24pCnZpZXcoZGVjYXRobG9uKQpgYGAKCmBgYHtyfQojIGNvbnZlcnQgcm93IG5hbWVzIHRvIGEgY29sdW1uCmRlY2F0aGxvbiA8LSByb3duYW1lc190b19jb2x1bW4oZGVjYXRobG9uLCAibmFtZSIpCmBgYAoKCmBgYHtyfQojIHRpZHkgY29sdW1uIG5hbWVzCmRlY2F0aGxvbl9jbGVhbiA8LSBjbGVhbl9uYW1lcyhkZWNhdGhsb24pCgpkZWNhdGhsb25fY2xlYW4KYGBgCgpgYGB7cn0KIyBjb252ZXJ0IHdpZGUgZGF0YSB0byBsb25nIGRhdGEKZGVjYXRobG9uX2NsZWFuIDwtIGRlY2F0aGxvbl9jbGVhbiAlPiUKICBwaXZvdF9sb25nZXIoY29scyA9ICJ4MTAwbSI6IngxNTAwbSIsCiAgICAgICAgICAgICAgIG5hbWVzX3RvID0gImV2ZW50IiwKICAgICAgICAgICAgICAgdmFsdWVzX3RvID0gInJlc3VsdCIpCmRlY2F0aGxvbl9jbGVhbgpgYGAKUTE6IFdobyBoYWQgdGhlIGxvbmdlc3QgbG9uZyBqdW1wIHNlZW4gaW4gdGhlIGRhdGE/CgpgYGB7cn0KcTEgPC0gZGVjYXRobG9uX2NsZWFuICU+JQogIGZpbHRlcihldmVudCA9PSAibG9uZ19qdW1wIikgJT4lCiAgYXJyYW5nZShkZXNjKHJlc3VsdCkpICU+JQogIGhlYWQoMSkKcTEKYGBgCgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoaGVyZSkKYGBgCgpgYGB7cn0KaGVyZSgpCmBgYAoKCmBgYHtyfQpkZWNhdGhsb24gPC0gcmVhZF9yZHMoaGVyZSgicmF3X2RhdGEvZGVjYXRobG9uLnJkcyIpKQpkZWNhdGhsb24KYGBgCgpgYGB7cn0KZ2xpbXBzZShkZWNhdGhsb24pCnZpZXcoZGVjYXRobG9uKQpgYGAKCmBgYHtyfQojIGNvbnZlcnQgcm93IG5hbWVzIHRvIGEgY29sdW1uCmRlY2F0aGxvbiA8LSByb3duYW1lc190b19jb2x1bW4oZGVjYXRobG9uLCAibmFtZSIpCmBgYAoKCmBgYHtyfQojIHRpZHkgY29sdW1uIG5hbWVzCmRlY2F0aGxvbl9jbGVhbiA8LSBjbGVhbl9uYW1lcyhkZWNhdGhsb24pCgpkZWNhdGhsb25fY2xlYW4KYGBgCgpgYGB7cn0KIyBjb252ZXJ0IHdpZGUgZGF0YSB0byBsb25nIGRhdGEKZGVjYXRobG9uX2NsZWFuIDwtIGRlY2F0aGxvbl9jbGVhbiAlPiUKICBwaXZvdF9sb25nZXIoY29scyA9ICJ4MTAwbSI6IngxNTAwbSIsCiAgICAgICAgICAgICAgIG5hbWVzX3RvID0gImV2ZW50IiwKICAgICAgICAgICAgICAgdmFsdWVzX3RvID0gInJlc3VsdCIpCmRlY2F0aGxvbl9jbGVhbgpgYGAKUTE6IFdobyBoYWQgdGhlIGxvbmdlc3QgbG9uZyBqdW1wIHNlZW4gaW4gdGhlIGRhdGE/CgpgYGB7cn0KcTEgPC0gZGVjYXRobG9uX2NsZWFuICU+JQogIGZpbHRlcihldmVudCA9PSAibG9uZ19qdW1wIikgJT4lCiAgYXJyYW5nZShkZXNjKHJlc3VsdCkpICU+JQogIGhlYWQoMSkKcTEKYGBgCgpRMjogV2hhdCB3YXMgdGhlIGF2ZXJhZ2UgMTAwbSB0aW1lIGluIGVhY2ggY29tcGV0aXRpb24/CgpgYGB7cn0KcTIgPC0gZGVjYXRobG9uX2NsZWFuICU+JQogIHNlbGVjdCgiY29tcGV0aXRpb24iLCAiZXZlbnQiLCAicmVzdWx0IikgJT4lCiAgZmlsdGVyKGV2ZW50ID09ICJ4MTAwbSIpICU+JQogIGdyb3VwX2J5KGNvbXBldGl0aW9uKSAlPiUKICBzdW1tYXJpc2UoYXZlcmFnZV9yZXN1bHQgPSBtZWFuKHJlc3VsdCkpCnEyCmBgYA==</div>
 
 
 

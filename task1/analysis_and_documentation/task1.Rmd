@@ -1,10 +1,90 @@
 ---
-title: "task1"
-author: "Steve Maddison"
-date: "20/07/2020"
-output: html_document
+title: "R Notebook"
+output: html_notebook
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(here)
+library(readr)
+```
+
+```{r}
+decathlon <- read_csv(here("clean_data/decathlon_clean.csv"))
+decathlon
+```
+
+Q1: Who had the longest long jump seen in the data?
+
+```{r}
+longest_long_jump <- decathlon %>%
+  filter(event == "long_jump") %>%
+  arrange(desc(result)) %>%
+  head(1)
+longest_long_jump
+```
+
+Q2: What was the average 100m time in each competition?
+
+```{r}
+avg_100m <- decathlon %>%
+  select("competition", "event", "result") %>%
+  filter(event == "x100m") %>%
+  group_by(competition) %>%
+  summarise(average_result = mean(result))
+avg_100m
+```
+
+Q3: Who had the highest total points across both competitions?
+
+```{r}
+highest_points <- decathlon %>%
+  select("name", "points") %>%
+  group_by(name, points) %>%
+  summarise() %>%
+  arrange(desc(points)) %>%
+  head(1)
+highest_points
+```
+
+Q4: What was the shot-put scores for the top three competitors in each competition?
+
+```{r}
+top_3_shot_put_decastar <- decathlon %>%
+  select("name", "competition", "result", "event") %>%
+  filter(competition == "Decastar", event == "shot_put") %>%
+  arrange(desc(result)) %>%
+  head(3)
+top_3_shot_put_decastar
+```
+
+```{r}
+top_3_shot_put_olympicg <- decathlon %>%
+  select("name", "competition", "result", "event") %>%
+  filter(competition == "OlympicG", event == "shot_put") %>%
+  arrange(desc(result)) %>%
+  head(3)
+top_3_shot_put_olympicg
+```
+
+Q5: What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
+
+```{r}
+avg_400m_less_50s <- decathlon %>%
+  select("result", "event") %>%
+  filter(event == "x400m", result < 50) %>%
+  group_by(event) %>%
+  summarise(average_result = mean(result))
+avg_400m_less_50s
+```
+
+```{r}
+avg_400m_more_50s <- decathlon %>%
+  select("result", "event") %>%
+  filter(event == "x400m", result > 50) %>%
+  group_by(event) %>%
+  summarise(average_result = mean(result))
+avg_400m_more_50s
 ```

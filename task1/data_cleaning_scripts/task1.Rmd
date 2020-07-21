@@ -8,12 +8,12 @@ library(tidyverse)
 library(dplyr)
 library(janitor)
 library(here)
+library(readr)
 ```
 
 ```{r}
 here()
 ```
-
 
 ```{r}
 decathlon <- read_rds(here("raw_data/decathlon.rds"))
@@ -30,7 +30,6 @@ view(decathlon)
 decathlon <- rownames_to_column(decathlon, "name")
 ```
 
-
 ```{r}
 # tidy column names
 decathlon_clean <- clean_names(decathlon)
@@ -46,6 +45,7 @@ decathlon_clean <- decathlon_clean %>%
                values_to = "result")
 decathlon_clean
 ```
+
 Q1: Who had the longest long jump seen in the data?
 
 ```{r}
@@ -117,4 +117,10 @@ q5 <- decathlon_clean %>%
   group_by(event) %>%
   summarise(average_result = mean(result))
 q5
+```
+
+Save clean dataframe to CSV
+
+```{r}
+write_csv(decathlon_clean, "../clean_data/decathlon_clean.csv")
 ```

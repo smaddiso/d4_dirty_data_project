@@ -99,3 +99,22 @@ q4 <- decathlon_clean %>%
 q4
 ```
 
+Q5: What was the average points for competitors who ran the 400m in less than 50 seconds vs. those than ran 400m in more than 50 seconds?
+
+```{r}
+q5 <- decathlon_clean %>%
+  select("result", "event") %>%
+  filter(event == "x400m", result < 50) %>%
+  group_by(event) %>%
+  summarise(average_result = mean(result))
+q5
+```
+
+```{r}
+q5 <- decathlon_clean %>%
+  select("result", "event") %>%
+  filter(event == "x400m", result > 50) %>%
+  group_by(event) %>%
+  summarise(average_result = mean(result))
+q5
+```

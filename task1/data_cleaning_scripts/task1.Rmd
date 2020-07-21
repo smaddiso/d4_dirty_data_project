@@ -66,3 +66,16 @@ q2 <- decathlon_clean %>%
   summarise(average_result = mean(result))
 q2
 ```
+
+Q3: Who had the highest total points across both competitions?
+
+```{r}
+q3 <- decathlon_clean %>%
+  select("name", "points") %>%
+  group_by(name, points) %>%
+  summarise() %>%
+  arrange(desc(points)) %>%
+  head(1)
+q3
+```
+

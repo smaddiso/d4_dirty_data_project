@@ -121,12 +121,53 @@ candy_all_years_clean <- rbind(candy_2015_clean_vertical,
 ```
 
 ```{r}
-# lowercase all values
-#candy_all_years_clean$trick_or_treating <- tolower(candy_all_years_clean$trick_or_treating)
-#candy_all_years_clean <- tolower(candy_all_years_clean[[2]])
-#candy_all_years_clean <- tolower(candy_all_years_clean[[4]])
-#candy_all_years_clean <- tolower(candy_all_years_clean[[6]])
-#candy_all_years_clean <- tolower(candy_all_years_clean[[7]])
+# lowercase all chr values
+candy_all_years_clean <- candy_all_years_clean %>%
+  mutate(trick_or_treating = tolower(trick_or_treating)) %>%
+  mutate(gender = tolower(gender)) %>%
+  mutate(country = tolower(country)) %>%
+  mutate(candy = tolower(candy)) %>%
+  mutate(rating = tolower(rating))
+```
+
+```{r}
+# write to CSV before cleaning
+#write_csv(candy_all_years_clean, "../clean_data/boing_boing_candy_clean_age.csv")
+```
+
+```{r}
+# remove invalid ages from age column
+age_pattern1 <- "[a-zA-Z]"
+age_pattern2 <- "[^[:alnum:]]" # remove ~!@#$%^&*(){}_+:"<>?,./;'[]-=
+age_pattern3 <- "[^a-zA-Z0-9]" # remove â í ü Â á ą ę ś ć
+
+candy_all_years_clean$age <- candy_all_years_clean$age %>%
+  str_replace_all(age_pattern1, "")
+
+candy_all_years_clean$age <- candy_all_years_clean$age %>%
+  str_replace_all(age_pattern2, "")
+
+candy_all_years_clean$age <- candy_all_years_clean$age %>%
+  str_replace_all(age_pattern3, "")
+```
+
+```{r}
+# convert age to numeric
+candy_all_years_clean$age <- as.numeric(candy_all_years_clean$age)
+
+#candy_all_years_clean$age <- candy_all_years_clean$age[candy_all_years_clean$age < 5] <- 0
 
 candy_all_years_clean
 ```
+
+```{r}
+# remove invalid countries from country column
+
+```
+
+
+```{r}
+# write to CSV
+write_csv(candy_all_years_clean, "../clean_data/boing_boing_candy_clean.csv")
+```
+

@@ -1,0 +1,132 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(here)
+library(readr)
+library(readxl)
+```
+
+```{r}
+here()
+```
+
+** Read files **
+
+```{r}
+candy_2015 <- read_excel("../raw_data/boing-boing-candy-2015.xlsx")
+candy_2016 <- read_excel("../raw_data/boing-boing-candy-2016.xlsx")
+candy_2017 <- read_excel("../raw_data/boing-boing-candy-2017.xlsx")
+```
+
+```{r}
+# view the raw data
+#view(candy_2015)
+#view(candy_2016)
+#view(candy_2017)
+```
+
+```{r}
+# select columns by position (column numbers)
+candy_2015_clean <- candy_2015 %>%
+  select(c(2:96))
+```
+```{r}
+# select columns by position (column numbers)
+candy_2016_clean <- candy_2016 %>%
+  select(c(2:5,7:106))
+```
+```{r}
+# select columns by position (column numbers)
+candy_2017_clean <- candy_2017 %>%
+  select(c(2:5,7:109))
+```
+
+```{r}
+# clean the column names
+candy_2015_clean <- clean_names(candy_2015_clean)
+candy_2016_clean <- clean_names(candy_2016_clean)
+candy_2017_clean <- clean_names(candy_2017_clean)
+```
+
+```{r}
+# add new column called year and insert value 2015/2016/2017 for each row
+candy_2015_clean$year = "2015"
+candy_2016_clean$year = "2016"
+candy_2017_clean$year = "2017"
+
+# add missing columns with no values
+candy_2015_clean$country = ''
+candy_2015_clean$gender = ''
+```
+
+```{r}
+# reorder 2015 columns
+candy_2015_clean_reordered <- candy_2015_clean[, c(2, 98, 1, 97, 3:96)]
+```
+
+```{r}
+dim(candy_2015_clean_reordered)
+dim(candy_2016_clean)
+dim(candy_2017_clean)
+```
+
+```{r}
+# pivot_long all three data
+candy_2015_clean_vertical <- pivot_longer(data = candy_2015_clean_reordered[,1:98],
+             cols = 5:97,
+             names_to = "candy",
+             values_to = "rating")
+
+candy_2016_clean_vertical <- pivot_longer(data = candy_2016_clean[,1:105],
+             cols = 5:104,
+             names_to = "candy",
+             values_to = "rating")
+
+candy_2017_clean_vertical <- pivot_longer(data = candy_2017_clean[,1:108],
+             cols = 5:107,
+             names_to = "candy",
+             values_to = "rating")
+```
+
+```{r}
+colnames(candy_2015_clean_vertical)[1] <- "trick_or_treating"
+colnames(candy_2015_clean_vertical)[2] <- "gender"
+colnames(candy_2015_clean_vertical)[3] <- "age"
+colnames(candy_2015_clean_vertical)[4] <- "country"
+colnames(candy_2015_clean_vertical)[5] <- "year"
+
+colnames(candy_2016_clean_vertical)[1] <- "trick_or_treating"
+colnames(candy_2016_clean_vertical)[2] <- "gender"
+colnames(candy_2016_clean_vertical)[3] <- "age"
+colnames(candy_2016_clean_vertical)[4] <- "country"
+colnames(candy_2016_clean_vertical)[5] <- "year"
+
+colnames(candy_2017_clean_vertical)[1] <- "trick_or_treating"
+colnames(candy_2017_clean_vertical)[2] <- "gender"
+colnames(candy_2017_clean_vertical)[3] <- "age"
+colnames(candy_2017_clean_vertical)[4] <- "country"
+colnames(candy_2017_clean_vertical)[5] <- "year"
+```
+
+```{r}
+candy_all_years_clean <- rbind(candy_2015_clean_vertical,
+                               candy_2016_clean_vertical,
+                               candy_2017_clean_vertical)
+```
+
+```{r}
+# lowercase all values
+#candy_all_years_clean$trick_or_treating <- tolower(candy_all_years_clean$trick_or_treating)
+#candy_all_years_clean <- tolower(candy_all_years_clean[[2]])
+#candy_all_years_clean <- tolower(candy_all_years_clean[[4]])
+#candy_all_years_clean <- tolower(candy_all_years_clean[[6]])
+#candy_all_years_clean <- tolower(candy_all_years_clean[[7]])
+
+candy_all_years_clean
+```

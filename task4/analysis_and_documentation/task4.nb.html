@@ -1821,9 +1821,41 @@ total_candy_ratings</code></pre>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Q2: What was the average age of people who are going out trick or treating and the average age of people not going trick or treating?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2FuZHkkYWdlXG5gYGAifQ== -->
+<pre class="r"><code>candy$age</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXZlcmFnZV9hZ2UgPC0gY2FuZHkgJT4lXG4gIHNlbGVjdChhZ2UsIHRyaWNrX29yX3RyZWF0aW5nKSAlPiVcbiAgZmlsdGVyKHRyaWNrX29yX3RyZWF0aW5nID09IFwieWVzXCIgfCB0cmlja19vcl90cmVhdGluZyA9PSBcIm5vXCIpICU+JVxuICBncm91cF9ieSh0cmlja19vcl90cmVhdGluZykgJT4lXG4gIHN1bW1hcmlzZShhdmVyYWdlID0gbWVhbihhZ2UpKVxuYGBgIn0= -->
+<pre class="r"><code>average_age &lt;- candy %&gt;%
+  select(age, trick_or_treating) %&gt;%
+  filter(trick_or_treating == &quot;yes&quot; | trick_or_treating == &quot;no&quot;) %&gt;%
+  group_by(trick_or_treating) %&gt;%
+  summarise(average = mean(age))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiYHN1bW1hcmlzZSgpYCB1bmdyb3VwaW5nIG91dHB1dCAob3ZlcnJpZGUgd2l0aCBgLmdyb3Vwc2AgYXJndW1lbnQpXG4ifQ== -->
+<pre><code>`summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXZlcmFnZV9hZ2VcbmBgYCJ9 -->
+<pre class="r"><code>average_age</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Mn0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVBTMDRETVF4MU0wMUhIYW1GaW5QTUxHRERBUkFIUUNCMVY0VnBHS0lPVHBWSithemdMSnlTVlFjN1RTUklGdkh6cy8zc2QzZXp2cXJXRlFBVU1BVUJoU1FJOHVIK3RyNEdtQXBLSmxTWWMzeW5wZ3NDVEo2SGVDb0l0QkVWSDNxZ3NHVHk4NGVWeXU4VU16V0o2aVUwLzFWYWVXZmEzY2E2alhkYWVZTmRMSlRxVlR2VjZVeGs3dXhiazRRV0xQUkYzemlPeDN4YjI2c2hiVXRrdFZWZU5VK081aW5MUjBxNzk4WWlEUWsyTGJQaGljdUlzd1B5SmR1NmZUN2dycjdrQmFGOGVvdUl4WC9NSzhVWXBXU1VtbW5zRE9wMGU2OGVkUitUSlRrT2hwdTlNK2lURTJLSHhsdXZVbC9WMmo0eHdSc2Nmd0VtSzQ1VDZ3RUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["trick_or_treating"],"name":[1],"type":["chr"],"align":["left"]},{"label":["average"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"no","2":"NA"},{"1":"yes","2":"NA"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKKiogbG9hZCBsaWJyYXJpZXMgKioKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShkcGx5cikKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGhlcmUpCmxpYnJhcnkocmVhZHIpCmxpYnJhcnkocmVhZHhsKQpgYGAKCioqIHJlYWQgY2xlYW5lZCBkYXRhIGZpbGUgKioKCmBgYHtyfQojIGdlbmRlciBhbmQgY291bnRyeSBuZWVkIHRvIGJlIGRlZmluZWQgY29sX3R5cGUKY2FuZHkgPC0gcmVhZF9jc3YoIi4uL2NsZWFuX2RhdGEvYm9pbmdfYm9pbmdfY2FuZHlfY2xlYW4uY3N2IiwKICAgICAgICAgICAgICAgICAgY29sX3R5cGVzID0gY29scyhnZW5kZXIgPSBjb2xfY2hhcmFjdGVyKCksIGNvdW50cnkgPSBjb2xfY2hhcmFjdGVyKCkpKQpgYGAKCioqIHJldmlldyBkYXRhICoqCgpgYGB7cn0KZGltKGNhbmR5KQpgYGAKCmBgYHtyfQpnbGltcHNlKGNhbmR5KQpgYGAKCiAqKiBUQVNLIFFVRVNUSU9OUyAqKgogClExOiBXaGF0IGlzIHRoZSB0b3RhbCBudW1iZXIgb2YgY2FuZHkgcmF0aW5ncyBnaXZlbiBhY3Jvc3MgdGhlIHRocmVlIHllYXJzLiAobnVtYmVyIG9mIGNhbmR5IHJhdGluZ3MsIG5vdCBudW1iZXIgb2YgcmF0ZXJzLiBEb27igJl0IGNvdW50IG1pc3NpbmcgdmFsdWVzKQoKYGBge3J9CnRvdGFsX2NhbmR5X3JhdGluZ3MgPC0gY2FuZHkgJT4lCiAgc2VsZWN0KHJhdGluZykgJT4lCiAgZmlsdGVyKHJhdGluZyA9PSAiam95IiB8IHJhdGluZyA9PSAiZGVzcGFpciIpICU+JQogIHN1bW1hcmlzZSh0b3RhbF9yYXRpbmdzID0gbigpKQp0b3RhbF9jYW5keV9yYXRpbmdzCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKKiogbG9hZCBsaWJyYXJpZXMgKioKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShkcGx5cikKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGhlcmUpCmxpYnJhcnkocmVhZHIpCmxpYnJhcnkocmVhZHhsKQpgYGAKCioqIHJlYWQgY2xlYW5lZCBkYXRhIGZpbGUgKioKCmBgYHtyfQojIGdlbmRlciBhbmQgY291bnRyeSBuZWVkIHRvIGJlIGRlZmluZWQgY29sX3R5cGUKY2FuZHkgPC0gcmVhZF9jc3YoIi4uL2NsZWFuX2RhdGEvYm9pbmdfYm9pbmdfY2FuZHlfY2xlYW4uY3N2IiwKICAgICAgICAgICAgICAgICAgY29sX3R5cGVzID0gY29scyhnZW5kZXIgPSBjb2xfY2hhcmFjdGVyKCksIGNvdW50cnkgPSBjb2xfY2hhcmFjdGVyKCkpKQpgYGAKCioqIHJldmlldyBkYXRhICoqCgpgYGB7cn0KZGltKGNhbmR5KQpgYGAKCmBgYHtyfQpnbGltcHNlKGNhbmR5KQpgYGAKCiAqKiBUQVNLIFFVRVNUSU9OUyAqKgogClExOiBXaGF0IGlzIHRoZSB0b3RhbCBudW1iZXIgb2YgY2FuZHkgcmF0aW5ncyBnaXZlbiBhY3Jvc3MgdGhlIHRocmVlIHllYXJzLiAobnVtYmVyIG9mIGNhbmR5IHJhdGluZ3MsIG5vdCBudW1iZXIgb2YgcmF0ZXJzLiBEb27igJl0IGNvdW50IG1pc3NpbmcgdmFsdWVzKQoKYGBge3J9CnRvdGFsX2NhbmR5X3JhdGluZ3MgPC0gY2FuZHkgJT4lCiAgc2VsZWN0KHJhdGluZykgJT4lCiAgZmlsdGVyKHJhdGluZyA9PSAiam95IiB8IHJhdGluZyA9PSAiZGVzcGFpciIpICU+JQogIHN1bW1hcmlzZSh0b3RhbF9yYXRpbmdzID0gbigpKQp0b3RhbF9jYW5keV9yYXRpbmdzCmBgYAoKUTI6IFdoYXQgd2FzIHRoZSBhdmVyYWdlIGFnZSBvZiBwZW9wbGUgd2hvIGFyZSBnb2luZyBvdXQgdHJpY2sgb3IgdHJlYXRpbmcgYW5kIHRoZSBhdmVyYWdlIGFnZSBvZiBwZW9wbGUgbm90IGdvaW5nIHRyaWNrIG9yIHRyZWF0aW5nPwoKYGBge3J9CmNhbmR5JGFnZQpgYGAKCgpgYGB7cn0KYXZlcmFnZV9hZ2UgPC0gY2FuZHkgJT4lCiAgc2VsZWN0KGFnZSwgdHJpY2tfb3JfdHJlYXRpbmcpICU+JQogIGZpbHRlcih0cmlja19vcl90cmVhdGluZyA9PSAieWVzIiB8IHRyaWNrX29yX3RyZWF0aW5nID09ICJubyIpICU+JQogIGdyb3VwX2J5KHRyaWNrX29yX3RyZWF0aW5nKSAlPiUKICBzdW1tYXJpc2UoYXZlcmFnZSA9IG1lYW4oYWdlKSkKYXZlcmFnZV9hZ2UKYGBgCgo=</div>
 
 
 

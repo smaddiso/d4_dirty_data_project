@@ -67,10 +67,23 @@ candy_2015_clean$year = "2015"
 candy_2016_clean$year = "2016"
 candy_2017_clean$year = "2017"
 
+# add new columns to give each rater a unique id
+candy_2015_clean$id = seq(1, 5630, by = 1)
+candy_2016_clean$id = seq(5631, 6889, by = 1)
+candy_2017_clean$id = seq(6890, 9349, by = 1)
+
 # add missing columns to 2015, with no values
 candy_2015_clean$country = ''
 candy_2015_clean$gender = ''
 ```
+
+```{r}
+# view the raw data
+view(candy_2015_clean)
+view(candy_2016_clean)
+view(candy_2017_clean)
+```
+
 
 ** Reorder 2015 columns to match 2016/2017 **
 

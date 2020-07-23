@@ -17,7 +17,9 @@ library(readxl)
 ** read cleaned data file **
 
 ```{r}
-candy <- read_csv("../clean_data/boing_boing_candy_clean.csv")
+# gender and country need to be defined col_type
+candy <- read_csv("../clean_data/boing_boing_candy_clean.csv",
+                  col_types = cols(gender = col_character(), country = col_character()))
 ```
 
 ** review data **
@@ -29,3 +31,16 @@ dim(candy)
 ```{r}
 glimpse(candy)
 ```
+
+ ** TASK QUESTIONS **
+ 
+Q1: What is the total number of candy ratings given across the three years. (number of candy ratings, not number of raters. Don’t count missing values)
+
+```{r}
+total_candy_ratings <- candy %>%
+  select(rating) %>%
+  filter(rating == "joy" | rating == "despair") %>%
+  summarise(total_ratings = n())
+total_candy_ratings
+```
+

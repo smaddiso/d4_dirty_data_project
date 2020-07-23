@@ -1749,6 +1749,7 @@ summary {
 
 
 <!-- rnb-text-begin -->
+<p>** load libraries **</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShqYW5pdG9yKVxubGlicmFyeShoZXJlKVxubGlicmFyeShyZWFkcilcbmxpYnJhcnkocmVhZHhsKVxuYGBgIn0= -->
@@ -1761,9 +1762,68 @@ library(readxl)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>** read cleaned data file **</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBnZW5kZXIgYW5kIGNvdW50cnkgbmVlZCB0byBiZSBkZWZpbmVkIGNvbF90eXBlXG5jYW5keSA8LSByZWFkX2NzdihcIi4uL2NsZWFuX2RhdGEvYm9pbmdfYm9pbmdfY2FuZHlfY2xlYW4uY3N2XCIsXG4gICAgICAgICAgICAgICAgICBjb2xfdHlwZXMgPSBjb2xzKGdlbmRlciA9IGNvbF9jaGFyYWN0ZXIoKSwgY291bnRyeSA9IGNvbF9jaGFyYWN0ZXIoKSkpXG5gYGAifQ== -->
+<pre class="r"><code># gender and country need to be defined col_type
+candy &lt;- read_csv(&quot;../clean_data/boing_boing_candy_clean.csv&quot;,
+                  col_types = cols(gender = col_character(), country = col_character()))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>** review data **</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGltKGNhbmR5KVxuYGBgIn0= -->
+<pre class="r"><code>dim(candy)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDkwMjg3MCAgICAgIDdcbiJ9 -->
+<pre><code>[1] 902870      7</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xpbXBzZShjYW5keSlcbmBgYCJ9 -->
+<pre class="r"><code>glimpse(candy)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogOTAyLDg3MFxuQ29sdW1uczogN1xuJCB0cmlja19vcl90cmVhdGluZyA8Y2hyPiBcIm5vXCIsIFwibm9cIiwgXCJub1wiLCBcIm5vXCIsIFwibm9cIiwgXCJub1wiLCBcIm5vXCIsIFwibm9cIiwgXCJub1wiLCBcIm5vXCIsIFwibm9cIiwgXCJub1wiLCDigKZcbiQgZ2VuZGVyICAgICAgICAgICAgPGNocj4gTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwg4oCmXG4kIGFnZSAgICAgICAgICAgICAgIDxkYmw+IDM1LCAzNSwgMzUsIDM1LCAzNSwgMzUsIDM1LCAzNSwgMzUsIDM1LCAzNSwgMzUsIDM1LCAzNSwgMzUsIDM1LCAzNSwgMzUsIOKAplxuJCBjb3VudHJ5ICAgICAgICAgICA8Y2hyPiBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCDigKZcbiQgeWVhciAgICAgICAgICAgICAgPGRibD4gMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwgMjAxNSwg4oCmXG4kIGNhbmR5ICAgICAgICAgICAgIDxjaHI+IFwiYnV0dGVyZmluZ2VyXCIsIFwieDEwMF9ncmFuZF9iYXJcIiwgXCJhbm9ueW1vdXNfYnJvd25fZ2xvYnNfdGhhdF9jb21lX2luX2Js4oCmXG4kIHJhdGluZyAgICAgICAgICAgIDxjaHI+IFwiam95XCIsIE5BLCBcImRlc3BhaXJcIiwgXCJqb3lcIiwgTkEsIE5BLCBOQSwgTkEsIFwiZGVzcGFpclwiLCBcImRlc3BhaXJcIiwgXCJkZXNw4oCmXG4ifQ== -->
+<pre><code>Rows: 902,870
+Columns: 7
+$ trick_or_treating &lt;chr&gt; &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, …
+$ gender            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ age               &lt;dbl&gt; 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, …
+$ country           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ year              &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, …
+$ candy             &lt;chr&gt; &quot;butterfinger&quot;, &quot;x100_grand_bar&quot;, &quot;anonymous_brown_globs_that_come_in_bl…
+$ rating            &lt;chr&gt; &quot;joy&quot;, NA, &quot;despair&quot;, &quot;joy&quot;, NA, NA, NA, NA, &quot;despair&quot;, &quot;despair&quot;, &quot;desp…</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>** TASK QUESTIONS **</p>
+<p>Q1: What is the total number of candy ratings given across the three years. (number of candy ratings, not number of raters. Don’t count missing values)</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfY2FuZHlfcmF0aW5ncyA8LSBjYW5keSAlPiVcbiAgc2VsZWN0KHJhdGluZykgJT4lXG4gIGZpbHRlcihyYXRpbmcgPT0gXCJqb3lcIiB8IHJhdGluZyA9PSBcImRlc3BhaXJcIikgJT4lXG4gIHN1bW1hcmlzZSh0b3RhbF9yYXRpbmdzID0gbigpKVxudG90YWxfY2FuZHlfcmF0aW5nc1xuYGBgIn0= -->
+<pre class="r"><code>total_candy_ratings &lt;- candy %&gt;%
+  select(rating) %&gt;%
+  filter(rating == &quot;joy&quot; | rating == &quot;despair&quot;) %&gt;%
+  summarise(total_ratings = n())
+total_candy_ratings</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVF3UW9DSVJDZDNMVklLSUsrWXhlaURoMDdSQjhRQmQzQ2RyZVNUQmZYcFk1OWVUWEtHcUdnNHp4OWIrYk5kbjJZc3dNRGdBUlNJSkJRdkFMZDd6YlpFaUFsbVBUd1llamlFejlOUFFBdzhwR3RiUFNKS242dkdyeE0vc0NSMVpiTG8rRldxRXNUTVlaR1AvTEFjckxraGNjSFZ5eGRTTjdFMHF6a2x1ZG5nM3pNM2hGbG9Hc3J0RUlTY1kzVGlOd3pFVEJwbGV1a3pJcHJxMjdaYk9FcWRJN2g1L3AvQW42N211VFRhZEZPcTErcGkxQlZhRjd5VXlXN1pJeVd2ZU84TmtMWllBWFJKdmVqQ2tpaFpVQzhPWGgvQVFHdHhNZXdBUUFBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["total_ratings"],"name":[1],"type":["int"],"align":["right"]}],"data":[{"1":"671860"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGRwbHlyKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoaGVyZSkKbGlicmFyeShyZWFkcikKbGlicmFyeShyZWFkeGwpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKKiogbG9hZCBsaWJyYXJpZXMgKioKCmBgYHtyfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShkcGx5cikKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGhlcmUpCmxpYnJhcnkocmVhZHIpCmxpYnJhcnkocmVhZHhsKQpgYGAKCioqIHJlYWQgY2xlYW5lZCBkYXRhIGZpbGUgKioKCmBgYHtyfQojIGdlbmRlciBhbmQgY291bnRyeSBuZWVkIHRvIGJlIGRlZmluZWQgY29sX3R5cGUKY2FuZHkgPC0gcmVhZF9jc3YoIi4uL2NsZWFuX2RhdGEvYm9pbmdfYm9pbmdfY2FuZHlfY2xlYW4uY3N2IiwKICAgICAgICAgICAgICAgICAgY29sX3R5cGVzID0gY29scyhnZW5kZXIgPSBjb2xfY2hhcmFjdGVyKCksIGNvdW50cnkgPSBjb2xfY2hhcmFjdGVyKCkpKQpgYGAKCioqIHJldmlldyBkYXRhICoqCgpgYGB7cn0KZGltKGNhbmR5KQpgYGAKCmBgYHtyfQpnbGltcHNlKGNhbmR5KQpgYGAKCiAqKiBUQVNLIFFVRVNUSU9OUyAqKgogClExOiBXaGF0IGlzIHRoZSB0b3RhbCBudW1iZXIgb2YgY2FuZHkgcmF0aW5ncyBnaXZlbiBhY3Jvc3MgdGhlIHRocmVlIHllYXJzLiAobnVtYmVyIG9mIGNhbmR5IHJhdGluZ3MsIG5vdCBudW1iZXIgb2YgcmF0ZXJzLiBEb27igJl0IGNvdW50IG1pc3NpbmcgdmFsdWVzKQoKYGBge3J9CnRvdGFsX2NhbmR5X3JhdGluZ3MgPC0gY2FuZHkgJT4lCiAgc2VsZWN0KHJhdGluZykgJT4lCiAgZmlsdGVyKHJhdGluZyA9PSAiam95IiB8IHJhdGluZyA9PSAiZGVzcGFpciIpICU+JQogIHN1bW1hcmlzZSh0b3RhbF9yYXRpbmdzID0gbigpKQp0b3RhbF9jYW5keV9yYXRpbmdzCmBgYAoK</div>
 
 
 

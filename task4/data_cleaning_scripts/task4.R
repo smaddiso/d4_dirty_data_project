@@ -31,26 +31,31 @@ candy_2015_clean$year = "2015"
 candy_2016_clean$year = "2016"
 candy_2017_clean$year = "2017"
 
+# add new columns to give each rater a unique id
+candy_2015_clean$id = seq(1, 5630, by = 1)
+candy_2016_clean$id = seq(5631, 6889, by = 1)
+candy_2017_clean$id = seq(6890, 9349, by = 1)
+
 # add missing columns to 2015, with no values
 candy_2015_clean$country = ''
 candy_2015_clean$gender = ''
 
 # reorder 2015 columns to match column order of 2016/2017
-candy_2015_clean_reordered <- candy_2015_clean[, c(2, 98, 1, 97, 3:96)]
+candy_2015_clean_reordered <- candy_2015_clean[, c(2, 99, 1, 98, 3:97)]
 
 # pivot each data set from wide to long format
-candy_2015_clean_vertical <- pivot_longer(data = candy_2015_clean_reordered[,1:98],
-                                          cols = 5:97, # exclude columns 1:4,98
+candy_2015_clean_vertical <- pivot_longer(data = candy_2015_clean_reordered[,1:99],
+                                          cols = 5:97, # exclude 1:4, 98, 99
                                           names_to = "candy",
                                           values_to = "rating")
 
-candy_2016_clean_vertical <- pivot_longer(data = candy_2016_clean[,1:105],
-                                          cols = 5:104, # exclude columns 1:4,105
+candy_2016_clean_vertical <- pivot_longer(data = candy_2016_clean[,1:106],
+                                          cols = 5:104, # exclude 1:4, 105, 106
                                           names_to = "candy",
                                           values_to = "rating")
 
-candy_2017_clean_vertical <- pivot_longer(data = candy_2017_clean[,1:108],
-                                          cols = 5:107, # exclude columns 1:4,108
+candy_2017_clean_vertical <- pivot_longer(data = candy_2017_clean[,1:109],
+                                          cols = 5:107, # exclude 1:4, 108, 109
                                           names_to = "candy",
                                           values_to = "rating")
 

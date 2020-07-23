@@ -39,7 +39,7 @@ Q1: What is the total number of candy ratings given across the three years. (num
 ```{r}
 total_candy_ratings <- candy %>%
   select(rating) %>%
-  filter(rating == "joy" | rating == "despair") %>%
+  filter(rating == "joy" | rating == "despair" | rating == "meh") %>%
   summarise(total_ratings = n())
 total_candy_ratings
 ```
@@ -47,16 +47,16 @@ total_candy_ratings
 Q2: What was the average age of people who are going out trick or treating and the average age of people not going trick or treating?
 
 ```{r}
-candy$age
-```
-
-
-```{r}
-average_age <- candy %>%
+average_age_going_out <- candy %>%
   select(age, trick_or_treating) %>%
-  filter(trick_or_treating == "yes" | trick_or_treating == "no") %>%
-  group_by(trick_or_treating) %>%
-  summarise(average = mean(age))
-average_age
+  filter(trick_or_treating == "yes", age != "NA") %>%
+  summarise(average_age_going_out = mean(age))
+average_age_going_out
+
+average_age_not_going_out <- candy %>%
+  select(age, trick_or_treating) %>%
+  filter(trick_or_treating == "no", age != "NA") %>%
+  summarise(average_age_not_going_out = mean(age))
+average_age_not_going_out
 ```
 

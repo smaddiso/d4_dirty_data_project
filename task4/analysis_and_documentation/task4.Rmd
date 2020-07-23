@@ -90,3 +90,15 @@ candy_with_most_meh_rating <- candy %>%
   head(1)
 candy_with_most_meh_rating
 ```
+
+Q4: How many people rated Starburst as despair?
+
+```{r}
+starburst_despair_rating <- candy %>%
+  select(candy, rating) %>%
+  filter(candy == "starburst", rating == "despair") %>%
+  group_by(candy) %>%
+  summarise(starburst_despair_rating = n())
+starburst_despair_rating
+```
+

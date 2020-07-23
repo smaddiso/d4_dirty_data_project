@@ -13,6 +13,7 @@ library(readxl)
 ```
 
 ```{r}
+# check location of working directory
 here()
 ```
 
@@ -31,21 +32,25 @@ candy_2017 <- read_excel("../raw_data/boing-boing-candy-2017.xlsx")
 #view(candy_2017)
 ```
 
+** Select required columns **
+
 ```{r}
-# select columns by position (column numbers)
+# select required columns by position (column numbers)
 candy_2015_clean <- candy_2015 %>%
   select(c(2:96))
 ```
 ```{r}
-# select columns by position (column numbers)
+# select required columns by position (column numbers)
 candy_2016_clean <- candy_2016 %>%
   select(c(2:5,7:106))
 ```
 ```{r}
-# select columns by position (column numbers)
+# select required columns by position (column numbers)
 candy_2017_clean <- candy_2017 %>%
   select(c(2:5,7:109))
 ```
+
+** Clean column names **
 
 ```{r}
 # clean the column names
@@ -54,21 +59,27 @@ candy_2016_clean <- clean_names(candy_2016_clean)
 candy_2017_clean <- clean_names(candy_2017_clean)
 ```
 
+** Add new columns **
+
 ```{r}
-# add new column called year and insert value 2015/2016/2017 for each row
+# add new column called year and insert value for each row
 candy_2015_clean$year = "2015"
 candy_2016_clean$year = "2016"
 candy_2017_clean$year = "2017"
 
-# add missing columns with no values
+# add missing columns to 2015, with no values
 candy_2015_clean$country = ''
 candy_2015_clean$gender = ''
 ```
 
+** Reorder 2015 columns to match 2016/2017 **
+
 ```{r}
-# reorder 2015 columns
+# reorder 2015 columns to match column order of 2016/2017
 candy_2015_clean_reordered <- candy_2015_clean[, c(2, 98, 1, 97, 3:96)]
 ```
+
+** Pivot long each data set **
 
 ```{r}
 dim(candy_2015_clean_reordered)
@@ -77,7 +88,7 @@ dim(candy_2017_clean)
 ```
 
 ```{r}
-# pivot_long all three data
+# pivot_long each data set
 candy_2015_clean_vertical <- pivot_longer(data = candy_2015_clean_reordered[,1:98],
              cols = 5:97,
              names_to = "candy",
@@ -93,6 +104,8 @@ candy_2017_clean_vertical <- pivot_longer(data = candy_2017_clean[,1:108],
              names_to = "candy",
              values_to = "rating")
 ```
+
+** Rename columns to prepare for row binding **
 
 ```{r}
 colnames(candy_2015_clean_vertical)[1] <- "trick_or_treating"
@@ -114,11 +127,15 @@ colnames(candy_2017_clean_vertical)[4] <- "country"
 colnames(candy_2017_clean_vertical)[5] <- "year"
 ```
 
+** Row bind all data sets into a single data set **
+
 ```{r}
 candy_all_years_clean <- rbind(candy_2015_clean_vertical,
                                candy_2016_clean_vertical,
                                candy_2017_clean_vertical)
 ```
+
+** Lower case all chr values **
 
 ```{r}
 # lowercase all chr values
@@ -130,44 +147,51 @@ candy_all_years_clean <- candy_all_years_clean %>%
   mutate(rating = tolower(rating))
 ```
 
-```{r}
-# write to CSV before cleaning
-#write_csv(candy_all_years_clean, "../clean_data/boing_boing_candy_clean_age.csv")
-```
+** Remove invalid ages (assume age range 10-99) **
 
 ```{r}
 # remove invalid ages from age column
-age_pattern1 <- "[a-zA-Z]"
-age_pattern2 <- "[^[:alnum:]]" # remove ~!@#$%^&*(){}_+:"<>?,./;'[]-=
-age_pattern3 <- "[^a-zA-Z0-9]" # remove â í ü Â á ą ę ś ć
+age_pattern <- "[1-9][0-9]" # ages 10-99 only
 
 candy_all_years_clean$age <- candy_all_years_clean$age %>%
-  str_replace_all(age_pattern1, "")
-
-candy_all_years_clean$age <- candy_all_years_clean$age %>%
-  str_replace_all(age_pattern2, "")
-
-candy_all_years_clean$age <- candy_all_years_clean$age %>%
-  str_replace_all(age_pattern3, "")
+  str_extract(age_pattern)
 ```
+
+** Convert age column from chr to dbl data type **
 
 ```{r}
 # convert age to numeric
 candy_all_years_clean$age <- as.numeric(candy_all_years_clean$age)
-
-#candy_all_years_clean$age <- candy_all_years_clean$age[candy_all_years_clean$age < 5] <- 0
-
-candy_all_years_clean
 ```
 
 ```{r}
-# remove invalid countries from country column
-
+# check age column for values
+#table(candy_all_years_clean$age)
 ```
 
+** clean country column **
 
 ```{r}
-# write to CSV
+# check country column for values before cleaning
+#unique(candy_all_years_clean$country)
+```
+
+```{r}
+# canada
+#canada <- c("canada`")
+
+#candy_all_years_clean$country <- candy_all_years_clean$country[candy_all_years_clean$country %in% canada] <- "canada"
+```
+
+```{r}
+# check country column for values after cleaning
+#unique(candy_all_years_clean$country)
+```
+
+** Write clean data to CSV **
+
+```{r}
+# write clean data set to CSV
 write_csv(candy_all_years_clean, "../clean_data/boing_boing_candy_clean.csv")
 ```
 

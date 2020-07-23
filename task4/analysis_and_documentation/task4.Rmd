@@ -60,3 +60,33 @@ average_age_not_going_out <- candy %>%
 average_age_not_going_out
 ```
 
+Q3: For each of joy, despair and meh, which candy bar received the most of these ratings?
+
+```{r}
+candy_with_most_joy_rating <- candy %>%
+  select(rating, candy) %>%
+  filter(rating == "joy") %>%
+  group_by(candy) %>%
+  summarise(candy_with_most_joy_rating = n()) %>%
+  arrange(desc(candy_with_most_joy_rating)) %>%
+  head(1)
+candy_with_most_joy_rating
+
+candy_with_most_despair_rating <- candy %>%
+  select(rating, candy) %>%
+  filter(rating == "despair") %>%
+  group_by(candy) %>%
+  summarise(candy_with_most_despair_rating = n()) %>%
+  arrange(desc(candy_with_most_despair_rating)) %>%
+  head(1)
+candy_with_most_despair_rating
+
+candy_with_most_meh_rating <- candy %>%
+  select(rating, candy) %>%
+  filter(rating == "meh") %>%
+  group_by(candy) %>%
+  summarise(candy_with_most_meh_rating = n()) %>%
+  arrange(desc(candy_with_most_meh_rating)) %>%
+  head(1)
+candy_with_most_meh_rating
+```

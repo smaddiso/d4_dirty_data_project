@@ -129,5 +129,27 @@ candy_all_years_clean <- candy_all_years_clean %>%
     country = ifelse(country %in% invalid_uk, "uk", country)
   )
 
+# remove extra characters to prevent duplicate candies
+candy_pattern1 <- "[q][6][_]"
+candy_pattern2 <- "_a_k_a_mary_janes"
+
+candy_all_years_clean$candy <- candy_all_years_clean$candy %>%
+  str_remove_all(candy_pattern1)
+
+candy_all_years_clean$candy <- candy_all_years_clean$candy %>%
+  str_remove_all(candy_pattern2)
+
+invalid_candy <- c("x100_grand_bar")
+
+candy_all_years_clean <- candy_all_years_clean %>%
+  mutate(candy = ifelse(candy %in% invalid_candy, "100_grand_bar", candy))
+
+# remove non-candy rows
+candy_all_years_clean <- candy_all_years_clean[!grepl(
+  "person_of_interest_season_3_dvd_box_set_not_including_disc_4_with_hilarious_outtakes", candy_all_years_clean$candy),]
+
+candy_all_years_clean <- candy_all_years_clean[!grepl(
+  "real_housewives_of_orange_county_season_9_blue_ray", candy_all_years_clean$candy),]
+
 # write clean data set to CSV
 write_csv(candy_all_years_clean, "../clean_data/boing_boing_candy_clean.csv")

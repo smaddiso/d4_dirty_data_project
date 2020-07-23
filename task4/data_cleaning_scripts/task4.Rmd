@@ -177,15 +177,35 @@ candy_all_years_clean$age <- as.numeric(candy_all_years_clean$age)
 ```
 
 ```{r}
-# canada
-#canada <- c("canada`")
+# clean country column
+invalid_canada <- c("canada`", "can")
+invalid_usa <- c("united states of america", "united states", "ussa", "u.s.a", "murica", "usa!",
+                 "usa (i think but it's an election year so who can really tell)", "u.s.",
+                 "america", "units states", "usa usa usa", "usa! usa! usa!", "the best one - usa",
+                 "the yoo ess of aaayyyyyy", "usa!!!!!!", "usa! usa!", "united sates",
+                 "sub-canadian north america... 'merica", "trumpistan", "merica", "united stetes",
+                 "usa usa usa usa", "united  states of america", "united state", "united staes",
+                 "usausausa", "unhinged states", "us of a", "unites states", "the united states",
+                 "north carolina", "unied states", "u s", "the united states of america",
+                 "unite states", "insanity lately", "usa? hard to tell anymore..", "'merica",
+                 "usas", "pittsburgh", "new york", "california",
+                 "i pretend to be from canada, but i am really from the united states.",
+                 "united stated", "ahem....amerca", "ud", "new jersey", "united ststes",
+                 "united statss", "murrika", "usaa", "alaska", "n. america", "u s a",
+                 "united statea", "usa usa usa!!!!", "u.s.a.", "us")
+invalid_uk <- c("england", "united kingdom", "united kindom", "u.k.", "scotland", "endland")
 
-#candy_all_years_clean$country <- candy_all_years_clean$country[candy_all_years_clean$country %in% canada] <- "canada"
+candy_all_years_clean <- candy_all_years_clean %>%
+  mutate(
+    country = ifelse(country %in% invalid_canada, "canada", country),
+    country = ifelse(country %in% invalid_usa, "usa", country),
+    country = ifelse(country %in% invalid_uk, "uk", country)
+    )
 ```
 
 ```{r}
 # check country column for values after cleaning
-#unique(candy_all_years_clean$country)
+unique(candy_all_years_clean$country)
 ```
 
 ** Write clean data to CSV **

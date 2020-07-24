@@ -123,4 +123,4 @@ popular_candy_by_gender_male <- candy %>%
 popular_candy_by_gender_male
 ```
 
-
+## Note: Q5 is not completed

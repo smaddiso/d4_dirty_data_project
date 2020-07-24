@@ -1,9 +1,14 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "D4 Module 1 - Dirty Data Project"
+author: "Steve Maddison"
+date: "24/07/2020"
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
-** load libraries **
+# Load libraries
 
 ```{r}
 library(tidyverse)
@@ -14,7 +19,7 @@ library(readr)
 library(readxl)
 ```
 
-** read cleaned data file **
+# Read cleaned data file
 
 ```{r}
 # gender and country need to be defined col_type
@@ -22,7 +27,7 @@ candy <- read_csv("../clean_data/boing_boing_candy_clean.csv",
                   col_types = cols(gender = col_character(), country = col_character()))
 ```
 
-** review data **
+# Review data
 
 ```{r}
 dim(candy)
@@ -32,9 +37,9 @@ dim(candy)
 glimpse(candy)
 ```
 
- ** TASK QUESTIONS **
+# TASK QUESTIONS
  
-Q1: What is the total number of candy ratings given across the three years. (number of candy ratings, not number of raters. Don’t count missing values)
+## Q1: What is the total number of candy ratings given across the three years. (number of candy ratings, not number of raters. Don’t count missing values)
 
 ```{r}
 total_candy_ratings <- candy %>%
@@ -44,7 +49,7 @@ total_candy_ratings <- candy %>%
 total_candy_ratings
 ```
 
-Q2: What was the average age of people who are going out trick or treating and the average age of people not going trick or treating?
+## Q2: What was the average age of people who are going out trick or treating and the average age of people not going trick or treating?
 
 ```{r}
 average_age_going_out <- candy %>%
@@ -60,7 +65,7 @@ average_age_not_going_out <- candy %>%
 average_age_not_going_out
 ```
 
-Q3: For each of joy, despair and meh, which candy bar received the most of these ratings?
+## Q3: For each of joy, despair and meh, which candy bar received the most of these ratings?
 
 ```{r}
 candy_with_most_joy_rating <- candy %>%
@@ -91,7 +96,7 @@ candy_with_most_meh_rating <- candy %>%
 candy_with_most_meh_rating
 ```
 
-Q4: How many people rated Starburst as despair?
+## Q4: How many people rated Starburst as despair?
 
 ```{r}
 starburst_despair_rating <- candy %>%
@@ -101,4 +106,21 @@ starburst_despair_rating <- candy %>%
   summarise(starburst_despair_rating = n())
 starburst_despair_rating
 ```
+
+## For the next three questions, count despair as -1, joy as +1 and meh as 0.
+
+## Q5: What was the most popular candy bar by this rating system for each gender in the dataset?
+
+```{r}
+unique(candy$gender)
+```
+
+```{r}
+popular_candy_by_gender_male <- candy %>%
+  select(gender, candy, rating) %>%
+  filter(gender == "male" & rating == "joy")
+  #mutate(new_rating = count(rating) * 1)
+popular_candy_by_gender_male
+```
+
 
